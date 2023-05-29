@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto: 500, 700");
+.card-container {
+    height: 720px;
+    position: relative;
+    width: 298px;
+}
+
+.card {
+    background-color: #ffe194;
+    border-radius: 29px;
+    height: 600px;
+    left: 0;
+    position: absolute;
+    top: 105px;
+    width:350px;
+}  
+.card_content_layout {
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    left: 19px;
+    position: absolute;
+    top: 0;
+    width: fit-content;
+}
+
+.image{
+    height: 240px;
+    min-width: 257px;
+    position: relative;
+}
+
+.name {
+    color: #4c4c6d;
+    font-family: 'Roboto';
+    font-size: 30px;
+    font-weight: 700;
+    height: 38px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 112px;
+}
+
+.r_row {
+    align-items: flex-start;
+    display: flex;
+    gap: 39px;
+    position: relative;
+    width: fit-content;
+}
+
+.content {
+    height: 80px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: 260px;
+    font-size:12px;
+}
+
+.know_more {
+    align-items: flex-start; 
+    background-color: #1b9c85;
+    border-radius: 19px;
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+    padding: 12px 40px;
+    position: relative;
+    width: fit-content;
+}
+
+.know_more_text {
+    color: rgb(255, 255, 255,1);
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap; 
+    width: fit-content;
+}
+ 
+.animal{
+    align-items: flex-start;
+    background-color: rgba(232, 246, 239, 1); 
+    border-radius: 16.5px;
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+    padding: 6px 36px;
+    position: relative;
+    width: fit-content;
+}
+
+._text {
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.animal.gender {
+    align-items: center; 
+    justify-content: center;
+}
+
+.r_row-item {
+    align-items: flex-start;
+    background-color: rgb(33, 77, 102, 1);
+    border-radius: 16.5px;
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+    padding: 6px 28px;
+    position: relative;
+    width: fit-content;
+}
+
+._text-1 {
+    letter-spacing: 0;
+    color: white;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+}
+    
