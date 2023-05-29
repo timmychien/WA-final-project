@@ -152,7 +152,16 @@ function Search (){
     <Container>
         <h1>Search Page</h1>
         <Form onSubmit={handleSearch}>
-          <Form.Group controlId="species">
+          <Form.Group controlId="animal">
+            <Form.Label>動物:</Form.Label>
+            <Form.Control as="select" value={selectedOption} onChange={handleSelectChange}>
+              <option value="">Search</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="breed">
             <Form.Label>品種:</Form.Label>
             <Form.Control as="select" value={selectedOption} onChange={handleSelectChange}>
               <option value="">Select</option>
@@ -161,7 +170,7 @@ function Search (){
               <option value="option3">Option 3</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="texture">
+          <Form.Group controlId="color">
             <Form.Label>花色:</Form.Label>
             <Form.Control as="select" value={selectedOption} onChange={handleSelectChange}>
               <option value="">Select</option>
@@ -170,7 +179,7 @@ function Search (){
               <option value="option3">Option 3</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="sex">
+          <Form.Group controlId="gender">
             <Form.Label>性別:</Form.Label>
             <Form.Control as="select" value={selectedOption} onChange={handleSelectChange}>
               <option value="">Select</option>
@@ -178,24 +187,6 @@ function Search (){
               <option value="option2">Option 2</option>
               <option value="option3">Option 3</option>
             </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="vaccine">
-            <Form.Label>疫苗:</Form.Label>
-            <Form.Control as="select" value={selectedOption} onChange={handleSelectChange}>
-              <option value="">Search</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="searchForm">
-            <Form.Label>其他:</Form.Label>
-            <FormControl
-              type="text"
-              placeholder="Enter your search query"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
           </Form.Group>
           <br/>
           <Button variant="primary" type="submit">Search</Button>
