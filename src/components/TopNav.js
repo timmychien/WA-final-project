@@ -14,22 +14,10 @@ function TopNav(){
                 <Container>
                 <Nav>
                     <Nav.Link as={Link} to="/">
-                    首頁
+                    領養媒合
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/animal">
-                    動物保護
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/environment">
-                    環境保護
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/campaign">
-                    近期活動
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/partner">
-                    合作夥伴
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/register">
-                    加入我們
+                    <Nav.Link as={Link} to="/post">
+                    發布貼文
                     </Nav.Link>
                 </Nav>
                 </Container>
