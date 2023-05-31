@@ -81,7 +81,7 @@ function Search (){
           method: 'POST', 
           mode: "cors", 
           body: JSON.stringify({
-            emial:email,
+            email:email,
             pid:pid
          }),
           headers: {
@@ -93,7 +93,7 @@ function Search (){
       .catch((err) => {
         console.log(err.message);
       })
-      .then(window.alert('您已認領成功！'))
+      .then(window.alert('已通知發文者，發文者將與您聯絡'))
       .then(window.location.href = '/')
   }catch(err){
       console.log(err.message);
@@ -126,7 +126,7 @@ function Search (){
                         </Row>
                         <div className="content">{infolist[0].content}</div>
                         <Form onSubmit={handleAdopt}>
-                          <Form.Control type="hidden" name="email" value="chien871101@gmail.com" />
+                          <Form.Control type="hidden" name="email" value="tsj8787@gmail.com" />
                           <Form.Control type="hidden" name="pid" value={infolist[0].pid} />
                           <Button type="submit" variant="primary" className="know_more">
                             <div className="know_more_text">{know_more_text}</div>
@@ -165,7 +165,7 @@ function Search (){
                             </Row>
                             <div className="content">{infolist[i].content}</div>
                             <Form onSubmit={handleAdopt}>
-                              <Form.Control type="hidden" name="email" value="chien871101@gmail.com"/>
+                              <Form.Control type="hidden" name="email" value="tsj8787@gmail.com"/>
                               <Form.Control type="hidden" name="pid" value={infolist[0].pid} />
                               <Button type="submit" variant="primary" className="know_more">
                                   <div className="know_more_text">{know_more_text}</div>
@@ -197,7 +197,7 @@ function Search (){
                             </Row>
                             <div className="content">{infolist[i+1].content}</div>
                             <Form onSubmit={handleAdopt}>
-                              <Form.Control type="hidden" name="email" value="chien871101@gmail.com" />
+                              <Form.Control type="hidden" name="email" value="tsj8787@gmail.com" />
                               <Form.Control type="hidden" name="pid" value={infolist[0].pid} />
                               <Button type="submit" variant="primary" className="know_more">
                                   <div className="know_more_text">{know_more_text}</div>
