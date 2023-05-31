@@ -1,55 +1,50 @@
 import {useState,React} from 'react';
+import {Buffer} from 'buffer';
 import './Post.css';
 import { Form, Button, Container, Row, Col,Image} from 'react-bootstrap';
 import ReactDOM from 'react-dom/client';
 import TopNav from './TopNav';
 import Footer from './Footer';
 import {HashRouter as Router} from 'react-router-dom';
+import { create } from 'ipfs-http-client'
+const projectId = '2MOmFb8jLyjYDMhiVqOmEMmOpfn';
+const projectSecret = 'ac2f110b95e4e6ff06469b5062e1d2ea';
+const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+const client = create({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+  apiPath: '/api/v0',
+  headers: {
+    authorization: auth,
+  }
+})
 function Post() {
   const [animalname, setAnimalName] = useState('');
+  //const [file,setFile]=useState(null);
   const [image, setImage] = useState('');
   const [animal,setAnimal]=useState('');
   const [breed, setBreed] = useState('');
   const [gender, setGender] = useState('');
   const [color,setColor]=useState('');
   const [content,setContent]=useState('');
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [previewVisible, setPreviewVisible] = useState(false);
-  const [ipfsUri, setIpfsUri] = useState('');
-  const [selectedOption, setSelectedOption] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-    setPreviewVisible(false);
-  };
-  const handleSelectChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
-  const handleUpload = () => {
-    const ipfs = window.IpfsHttpClient({
-        host: 'ipfs.infura.io',
-        port: '5001',
-        protocol: 'https',
-    });
-    if (selectedFile) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-        const arrayBuffer = e.target.result;
-        const byteArray = new Uint8Array(arrayBuffer);
-        ipfs.add(byteArray, (err, result) => {
-        console.log(err, result);
-        if (!err && result && result.length > 0) {
-            const ipfsHash = result[0].hash;
-            const ipfsLink = `https://gateway.ipfs.io/ipfs/${ipfsHash}`;
-            console.log(ipfsLink);
-            setIpfsUri(ipfsLink);
-        }
-        });
-    };
-    reader.readAsArrayBuffer(selectedFile);
+  const retrieveFile = async(e) => {
+    const file = e.target.files[0]
+    if(file){
+      try {
+        const added = await client.add(file);
+        const url = `https://webapp.infura-ipfs.io/ipfs/${added.path}`;
+        console.log(url)
+        setImage(url);
+        console.log(image)     
+      } catch (error) {
+        console.log(error.message);
+      }
+    }else{
+      console.log('upload failed')
     }
-  };
+    e.preventDefault();  
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -115,7 +110,8 @@ function Post() {
                 <Form.Label htmlFor="name">名字*:</Form.Label>
                 <Form.Control type="value" placeholder="請輸入名字" id="animalname" name="animalname" onChange={(e)=>setAnimalName(e.target.value)}/>
                 <Form.Label htmlFor="image">圖片*:</Form.Label>
-                <Form.Control type="value" placeholder="請輸入圖片" id="image" name="image" onChange={(e)=>setImage(e.target.value)}/>
+                <Form.Control type="file" id="image" name="image" onChange={retrieveFile}/>
+                <img className="preview" src={image}></img><br/>
                 <Form.Label htmlFor="animal">動物種類*:</Form.Label>
                 <Form.Select value={animal} onChange={(e)=>setAnimal(e.target.value)}>
                     <option value="">請選擇</option>
